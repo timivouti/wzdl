@@ -6,9 +6,8 @@ import { Attributes } from "./models/Attributes";
 import { Eventing } from "./models/Eventing";
 import { Model } from "./models/Model";
 
-const DOMRender = <T, K>(collectionView: CollectionView<T, K>): void => {
-  //collectionView.collection.on("change", () => collectionView.render());
-  collectionView.render();
+const DOMRender = <T extends Model<K>, K>(containerView: View<T, K>): void => {
+  containerView.render();
 };
 
 export {

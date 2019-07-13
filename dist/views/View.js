@@ -6,7 +6,6 @@ var View = /** @class */ (function () {
         this.model = model;
         this.regions = {};
         this.bindModel();
-        this.render();
     }
     View.prototype.regionsMap = function () {
         return {};

@@ -14,8 +14,7 @@ var Eventing_1 = require("./models/Eventing");
 exports.Eventing = Eventing_1.Eventing;
 var Model_1 = require("./models/Model");
 exports.Model = Model_1.Model;
-var DOMRender = function (collectionView) {
-    //collectionView.collection.on("change", () => collectionView.render());
-    collectionView.render();
+var DOMRender = function (containerView) {
+    containerView.render();
 };
 exports.DOMRender = DOMRender;

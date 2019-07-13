@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var shallowEqual_1 = require("../utils/shallowEqual");
 var Model = /** @class */ (function () {
     function Model(attributes, events, sync) {
         this.attributes = attributes;
@@ -11,8 +12,10 @@ var Model = /** @class */ (function () {
         this.getAll = this.attributes.getAll;
     }
     Model.prototype.set = function (update) {
-        this.attributes.set(update);
-        this.events.trigger("change");
+        if (!shallowEqual_1.shallowEqualObjects(this.attributes.getAll(), update)) {
+            this.attributes.set(update);
+            this.events.trigger("change");
+        }
     };
     Model.prototype.fetch = function () {
         var _this = this;
