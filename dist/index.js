@@ -14,6 +14,8 @@ var Eventing_1 = require("./models/Eventing");
 exports.Eventing = Eventing_1.Eventing;
 var Model_1 = require("./models/Model");
 exports.Model = Model_1.Model;
+var shallowEqual_1 = require("./utils/shallowEqual");
+exports.shallowEqualObjects = shallowEqual_1.shallowEqualObjects;
 var DOMRender = function (containerView) {
     containerView.render();
 };

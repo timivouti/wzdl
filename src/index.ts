@@ -6,6 +6,7 @@ import { Attributes } from "./models/Attributes";
 import { Eventing } from "./models/Eventing";
 import { Model } from "./models/Model";
 import { EventsMap, Callback, RegionsMap } from "./utils/types";
+import { shallowEqualObjects } from "./utils/shallowEqual";
 
 const DOMRender = <T extends Model<K>, K>(containerView: View<T, K>): void => {
   containerView.render();
@@ -22,5 +23,6 @@ export {
   Model,
   EventsMap,
   RegionsMap,
+  shallowEqualObjects,
   Callback
 };

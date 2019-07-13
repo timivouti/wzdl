@@ -12,7 +12,8 @@ exports.shallowEqualObjects = function (objA, objB) {
     if (objAKeys.length !== objBKeys.length) {
         return false;
     }
-    for (var key in objAKeys) {
+    for (var _i = 0, objAKeys_1 = objAKeys; _i < objAKeys_1.length; _i++) {
+        var key = objAKeys_1[_i];
         if (objA[key] !== objB[key]) {
             return false;
         }

@@ -14,7 +14,7 @@ export const shallowEqualObjects = <T, K extends keyof T>(objA: T, objB: T) => {
     return false;
   }
 
-  for (let key in objAKeys) {
+  for (let key of objAKeys) {
     if (objA[key as K] !== objB[key as K]) {
       return false;
     }
