@@ -1,4 +1,4 @@
-declare type Callback = () => void;
+import { Callback } from "../utils/types";
 export declare class Eventing {
     events: {
         [key: string]: Callback[];
@@ -6,4 +6,3 @@ export declare class Eventing {
     on: (eventName: string, callback: Callback) => void;
     trigger: (eventName: string) => void;
 }
-export {};

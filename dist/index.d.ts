@@ -5,5 +5,6 @@ import { ApiSync } from "./models/ApiSync";
 import { Attributes } from "./models/Attributes";
 import { Eventing } from "./models/Eventing";
 import { Model } from "./models/Model";
+import { EventsMap, Callback } from "./utils/types";
 declare const DOMRender: <T extends Model<K>, K>(containerView: View<T, K>) => void;
-export { DOMRender, View, CollectionView, ApiSync, Attributes, Collection, Eventing, Model };
+export { DOMRender, View, CollectionView, ApiSync, Attributes, Collection, Eventing, Model, EventsMap, Callback };

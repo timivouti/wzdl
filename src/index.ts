@@ -5,6 +5,7 @@ import { ApiSync } from "./models/ApiSync";
 import { Attributes } from "./models/Attributes";
 import { Eventing } from "./models/Eventing";
 import { Model } from "./models/Model";
+import { EventsMap, Callback } from "./utils/types";
 
 const DOMRender = <T extends Model<K>, K>(containerView: View<T, K>): void => {
   containerView.render();
@@ -18,5 +19,7 @@ export {
   Attributes,
   Collection,
   Eventing,
-  Model
+  Model,
+  EventsMap,
+  Callback
 };
