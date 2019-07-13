@@ -16,7 +16,15 @@ var Model_1 = require("./models/Model");
 exports.Model = Model_1.Model;
 var shallowEqual_1 = require("./utils/shallowEqual");
 exports.shallowEqualObjects = shallowEqual_1.shallowEqualObjects;
-var DOMRender = function (containerView) {
-    containerView.render();
+var DOMRender = function (constructorFn, model) {
+    var root = document.getElementById("root");
+    if (root) {
+        var rootItem = new constructorFn(root, model);
+        rootItem.render();
+        return rootItem;
+    }
+    else {
+        throw new Error("Root div not found");
+    }
 };
 exports.DOMRender = DOMRender;

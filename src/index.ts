@@ -8,8 +8,18 @@ import { Model } from "./models/Model";
 import { EventsMap, Callback, RegionsMap } from "./utils/types";
 import { shallowEqualObjects } from "./utils/shallowEqual";
 
-const DOMRender = <T extends Model<K>, K>(containerView: View<T, K>): void => {
-  containerView.render();
+const DOMRender = <T extends Model<K>, K, V extends View<T, K>>(
+  constructorFn: new (parentItem: Element, model: T) => V,
+  model: T
+): V => {
+  const root = document.getElementById("root");
+  if (root) {
+    const rootItem = new constructorFn(root, model);
+    rootItem.render();
+    return rootItem;
+  } else {
+    throw new Error("Root div not found");
+  }
 };
 
 export {

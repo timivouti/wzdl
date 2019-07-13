@@ -7,5 +7,5 @@ import { Eventing } from "./models/Eventing";
 import { Model } from "./models/Model";
 import { EventsMap, Callback, RegionsMap } from "./utils/types";
 import { shallowEqualObjects } from "./utils/shallowEqual";
-declare const DOMRender: <T extends Model<K>, K>(containerView: View<T, K>) => void;
+declare const DOMRender: <T extends Model<K>, K, V extends View<T, K>>(constructorFn: new (parentItem: Element, model: T) => V, model: T) => V;
 export { DOMRender, View, CollectionView, ApiSync, Attributes, Collection, Eventing, Model, EventsMap, RegionsMap, shallowEqualObjects, Callback };
