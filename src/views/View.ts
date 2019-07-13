@@ -1,5 +1,5 @@
 import { Model } from "../models/Model";
-import { EventsMap } from "../utils/types";
+import { EventsMap, RegionsMap } from "../utils/types";
 
 export abstract class View<T extends Model<K>, K> {
   regions: { [key: string]: Element } = {};
@@ -10,7 +10,7 @@ export abstract class View<T extends Model<K>, K> {
 
   abstract template(): string;
 
-  regionsMap(): { [key: string]: string } {
+  regionsMap(): RegionsMap {
     return {};
   }
 

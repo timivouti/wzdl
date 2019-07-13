@@ -1,5 +1,5 @@
 import { Model } from "../models/Model";
-import { EventsMap } from "../utils/types";
+import { EventsMap, RegionsMap } from "../utils/types";
 export declare abstract class View<T extends Model<K>, K> {
     parent: Element;
     model: T;
@@ -8,9 +8,7 @@ export declare abstract class View<T extends Model<K>, K> {
     };
     constructor(parent: Element, model: T);
     abstract template(): string;
-    regionsMap(): {
-        [key: string]: string;
-    };
+    regionsMap(): RegionsMap;
     eventsMap(): EventsMap;
     bindModel(): void;
     bindEvents(fragment: DocumentFragment): void;
