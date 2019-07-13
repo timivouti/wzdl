@@ -1,6 +1,7 @@
 {
   "name": "wzdl",
   "description": "Typescript web framework",
+  "version": "1.0.0-beta.0",
   "author": {
     "email": "voutilainentimi@gmail.com",
     "name": "Timi Voutilainen"

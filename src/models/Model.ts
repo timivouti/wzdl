@@ -1,4 +1,5 @@
 import { AxiosPromise, AxiosResponse } from "axios";
+import { shallowEqualObjects } from "../utils/shallowEqual";
 
 type Callback = () => void;
 
@@ -35,8 +36,10 @@ export class Model<T extends HasId> {
   getAll = this.attributes.getAll;
 
   set(update: T): void {
-    this.attributes.set(update);
-    this.events.trigger("change");
+    if (!shallowEqualObjects(this.attributes.getAll(), update)) {
+      this.attributes.set(update);
+      this.events.trigger("change");
+    }
   }
 
   fetch(): void {
