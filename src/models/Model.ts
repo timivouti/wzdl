@@ -36,8 +36,8 @@ export class Model<T extends HasId> {
   getAll = this.attributes.getAll;
 
   set(update: T): void {
+    this.attributes.set(update);
     if (!shallowEqualObjects(this.attributes.getAll(), update)) {
-      this.attributes.set(update);
       this.events.trigger("change");
     }
   }

@@ -1,8 +1,11 @@
 import axios, { AxiosResponse } from "axios";
 import { Eventing } from "./Eventing";
+import { shallowEqualObjects } from "../utils/shallowEqual";
 
 export class Collection<T, K> {
   events: Eventing = new Eventing();
+  rootUrl?: string;
+  deserialize?: (json: K) => T;
 
   constructor(public models: T[] = []) {}
 
@@ -16,20 +19,34 @@ export class Collection<T, K> {
 
   set(models: T[]): void {
     this.models = models;
-    this.trigger("change");
+    if (!shallowEqualObjects(this.models, models)) {
+      this.trigger("change");
+    }
+  }
+
+  setRootUrl(rootUrl: string): void {
+    this.rootUrl = rootUrl;
+  }
+
+  setDeserialize(deserialize: (json: K) => T): void {
+    this.deserialize = deserialize;
   }
 
   get() {
     return this.models;
   }
 
-  fetch(rootUrl: string, deserialize: (json: K) => T): void {
-    axios.get(rootUrl).then((response: AxiosResponse) => {
-      response.data.forEach((value: K) => {
-        this.models.push(deserialize(value));
-      });
+  fetch(): void {
+    if (this.rootUrl && this.deserialize) {
+      axios.get(this.rootUrl).then((response: AxiosResponse) => {
+        response.data.forEach((value: K) => {
+          this.models.push(this.deserialize!(value));
+        });
 
-      this.trigger("change");
-    });
+        this.trigger("change");
+      });
+    } else {
+      throw new Error("Rooturl or deserializer not set up");
+    }
   }
 }

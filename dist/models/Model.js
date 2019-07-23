@@ -12,8 +12,8 @@ var Model = /** @class */ (function () {
         this.getAll = this.attributes.getAll;
     }
     Model.prototype.set = function (update) {
+        this.attributes.set(update);
         if (!shallowEqual_1.shallowEqualObjects(this.attributes.getAll(), update)) {
-            this.attributes.set(update);
             this.events.trigger("change");
         }
     };

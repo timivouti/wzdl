@@ -5,3 +5,8 @@ export declare type EventsMap = {
 export declare type RegionsMap = {
     [key: string]: string;
 };
+export declare type RouteRegionsMap = {
+    [route: string]: {
+        [key: string]: string;
+    };
+};
