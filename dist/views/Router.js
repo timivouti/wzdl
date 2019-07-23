@@ -22,12 +22,17 @@ var Router = /** @class */ (function (_super) {
         _this.parent = parent;
         _this.model = model;
         _this.routeRegions = {};
-        _this.history = history_1.createBrowserHistory();
+        _this.browserHistory = history_1.createBrowserHistory();
+        var unlisten = _this.browserHistory.listen(function (location, action) {
+            console.log(action, location.pathname, location.state);
+            _this.render();
+        });
+        document.addEventListener("beforeunload", function () { return unlisten(); });
         return _this;
     }
-    Object.defineProperty(Router.prototype, "location", {
+    Object.defineProperty(Router.prototype, "history", {
         get: function () {
-            return this.history;
+            return this.browserHistory;
         },
         enumerable: true,
         configurable: true

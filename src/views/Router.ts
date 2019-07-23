@@ -5,14 +5,20 @@ import { RouteRegionsMap } from "../utils/types";
 
 export abstract class Router<T extends Model<K>, K> extends View<T, K> {
   routeRegions: { [route: string]: { [key: string]: Element } } = {};
-  private history: History<any> = createBrowserHistory();
+  private browserHistory: History<any> = createBrowserHistory();
 
   constructor(public parent: Element, public model: T) {
     super(parent, model);
+    const unlisten = this.browserHistory.listen((location, action) => {
+      console.log(action, location.pathname, location.state);
+      this.render();
+    });
+
+    document.addEventListener("beforeunload", () => unlisten());
   }
 
-  get location() {
-    return this.history;
+  get history() {
+    return this.browserHistory;
   }
 
   routeRegionsMap(): RouteRegionsMap {

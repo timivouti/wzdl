@@ -10,9 +10,9 @@ export declare abstract class Router<T extends Model<K>, K> extends View<T, K> {
             [key: string]: Element;
         };
     };
-    private history;
+    private browserHistory;
     constructor(parent: Element, model: T);
-    readonly location: History<any>;
+    readonly history: History<any>;
     routeRegionsMap(): RouteRegionsMap;
     mapRegions(fragment: DocumentFragment): void;
     render(): void;
