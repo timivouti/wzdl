@@ -16,6 +16,8 @@ var Model_1 = require("./models/Model");
 exports.Model = Model_1.Model;
 var shallowEqual_1 = require("./utils/shallowEqual");
 exports.shallowEqualObjects = shallowEqual_1.shallowEqualObjects;
+var Router_1 = require("./views/Router");
+exports.Router = Router_1.Router;
 var DOMRender = function (constructorFn, model) {
     var root = document.getElementById("root");
     if (root) {

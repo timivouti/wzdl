@@ -7,6 +7,7 @@ import { Eventing } from "./models/Eventing";
 import { Model } from "./models/Model";
 import { EventsMap, Callback, RegionsMap } from "./utils/types";
 import { shallowEqualObjects } from "./utils/shallowEqual";
+import { Router } from "./views/Router";
 
 const DOMRender = <T extends Model<K>, K, V extends View<T, K>>(
   constructorFn: new (parentItem: Element, model: T) => V,
@@ -25,6 +26,7 @@ const DOMRender = <T extends Model<K>, K, V extends View<T, K>>(
 export {
   DOMRender,
   View,
+  Router,
   CollectionView,
   ApiSync,
   Attributes,
